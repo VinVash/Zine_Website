@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "../api/axios";
-import { auth, db } from "../firebase";
-import { getDoc, doc } from "firebase/firestore";
+// import { auth, db } from "../firebase";
+// import { getDoc, doc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { getUser, IUser } from "../apis/users";
+import { IUser } from "../apis/users";
 import { log } from "console";
-import {setAuthorizationHeader} from "../api/axios"
+import { setAuthorizationHeader } from "../api/axios";
 
 interface UserType {
   email: string | null;
@@ -28,10 +28,20 @@ export const sendPasswordResetEmail = async (email: string) => {
     throw err;
   }
 };
-const AuthContext = createContext<IAuthContext>({ user: { email: null, uid: null }, authUser: undefined, logIn: async () => {}, signUp: async () => {}, logOut: async () => {} });
+const AuthContext = createContext<IAuthContext>({
+  user: { email: null, uid: null },
+  authUser: undefined,
+  logIn: async () => {},
+  signUp: async () => {},
+  logOut: async () => {},
+});
 export const useAuth = () => useContext<IAuthContext>(AuthContext);
 
-export const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [user, setUser] = useState<UserType>({ email: null, uid: null });
   const [authUser, setAuthUser] = useState<IUser | undefined>();
   const [loading, setLoading] = useState(true);
@@ -43,7 +53,7 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
       const response = await axios.get("/auth/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      if(token) setAuthorizationHeader(token)
+      if (token) setAuthorizationHeader(token);
       // console.log("inside user details", response);
       return response.data;
     } catch (err) {
@@ -56,14 +66,14 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     try {
       const response = await axios.post("/auth/login", { email, password });
       const { jwt, success, failureReason } = response.data;
-      if(failureReason != null) {
+      if (failureReason != null) {
         throw new Error(failureReason);
       }
       console.log(response.data);
       localStorage.setItem("token", jwt);
       getUserDetails().then((res) => {
         const userData = res as IUser;
-        setAuthorizationHeader(jwt)
+        setAuthorizationHeader(jwt);
         setAuthUser(userData);
         setUser({ uid: userData.id, email: userData.email });
       });
@@ -75,7 +85,11 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     }
   };
 
-  const signUp = async (name: string, email: string, password: string): Promise<any> => {
+  const signUp = async (
+    name: string,
+    email: string,
+    password: string
+  ): Promise<any> => {
     try {
       const res = await axios.post("/auth/register", { name, email, password });
       return res;
@@ -129,5 +143,9 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     setAuthUser(undefined);
   };
 
-  return <AuthContext.Provider value={{ user, authUser, logIn, signUp, logOut }}>{loading ? null : children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ user, authUser, logIn, signUp, logOut }}>
+      {loading ? null : children}
+    </AuthContext.Provider>
+  );
 };

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { db } from '../../firebase';
-import { addDoc, collection } from "firebase/firestore";
+// import { db } from '../../firebase';
+// import { addDoc, collection } from "firebase/firestore";
 import { RequestData, ResponseData } from "./types";
 
 
@@ -11,19 +11,19 @@ export const askChatBot = async ({prompt, session}: RequestData) => {
     return response.data as ResponseData
 }
 
-const chatCollection = collection(db, 'chatbot')
-export const reportIncorrectResponse = async (question: string, response: string, flag: boolean) => {
-    let sessionid = localStorage.getItem('chatsession')
-    if (!sessionid) {
-        sessionid = Math.random().toString(16).slice(2)
-        localStorage.setItem('chatsession', sessionid)
-    }
+// const chatCollection = collection(db, 'chatbot')
+// export const reportIncorrectResponse = async (question: string, response: string, flag: boolean) => {
+//     let sessionid = localStorage.getItem('chatsession')
+//     if (!sessionid) {
+//         sessionid = Math.random().toString(16).slice(2)
+//         localStorage.setItem('chatsession', sessionid)
+//     }
     
-    return addDoc(chatCollection, {
-        date: Date.now(),
-        sessionid: sessionid,
-        question,
-        response,
-        flag
-    })
-}
+//     return addDoc(chatCollection, {
+//         date: Date.now(),
+//         sessionid: sessionid,
+//         question,
+//         response,
+//         flag
+//     })
+// }

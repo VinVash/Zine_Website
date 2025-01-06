@@ -1,38 +1,26 @@
-import React, {
-  useEffect,
-  useState,
-} from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ZineLogo from "../../images/admin/logo.png";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/authContext";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+// import { faLock } from "@fortawesome/free-solid-svg-icons";
 import hamburger from "../../images/hamburger.svg";
-import Modal from "./modal";
-import { getAuth, deleteUser } from "firebase/auth";
-import { toast } from "react-toastify";
+// import Modal from "./modal";
+// import { getAuth, deleteUser } from "firebase/auth";
+// import { toast } from "react-toastify";
 
 const SideNav = () => {
   const { authUser, logOut } = useAuth();
   const [hide, setHide] = useState(true);
-  const [screenWidth, setScreenWidth] = useState(
-    window.innerWidth
-  );
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const updateScreenWidth = () => {
     setScreenWidth(window.innerWidth);
   };
   useEffect(() => {
-    window.addEventListener(
-      "resize",
-      updateScreenWidth
-    );
-    return () =>
-      window.removeEventListener(
-        "resize",
-        updateScreenWidth
-      );
+    window.addEventListener("resize", updateScreenWidth);
+    return () => window.removeEventListener("resize", updateScreenWidth);
   }, []);
 
   const router = useRouter();
@@ -43,17 +31,12 @@ const SideNav = () => {
         <div
           className="fixed h-full w-full col-span-12 md:col-span-3 pt-8 px-12 text-white md:relative md:block z-50"
           style={{
-            background:
-              "linear-gradient(to right, #003D63, #0C72B0)",
+            background: "linear-gradient(to right, #003D63, #0C72B0)",
           }}
         >
           <div className="flex flex-col items-center justify-between pt-6">
             <div className="flex px-auto">
-              <Image
-                src={ZineLogo}
-                width={80}
-                height={80}
-              />
+              <Image src={ZineLogo} width={80} height={80} />
             </div>
             {/* <h3 className="text-3xl font-bold mt-4 md:mr-2">{authUser?.name}</h3> */}
           </div>
@@ -63,9 +46,7 @@ const SideNav = () => {
               <Link href="/admin/dashboard">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "dashboard"
-                      ? "font-bold"
-                      : ""
+                    page === "dashboard" ? "font-bold" : ""
                   }`}
                 >
                   Dashboard
@@ -74,9 +55,7 @@ const SideNav = () => {
               <Link href="/admin/events">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "events"
-                      ? "font-bold"
-                      : ""
+                    page === "events" ? "font-bold" : ""
                   }`}
                 >
                   Recruitments & Events
@@ -86,9 +65,7 @@ const SideNav = () => {
               <Link href="/admin/roles">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "roles"
-                      ? "font-bold"
-                      : ""
+                    page === "roles" ? "font-bold" : ""
                   }`}
                 >
                   Roles
@@ -97,9 +74,7 @@ const SideNav = () => {
               <Link href="/admin/tasks">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "tasks"
-                      ? "font-bold"
-                      : ""
+                    page === "tasks" ? "font-bold" : ""
                   }`}
                 >
                   Tasks
@@ -108,9 +83,7 @@ const SideNav = () => {
               <Link href="/admin/taskInstances">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "taskInstances"
-                      ? "font-bold"
-                      : ""
+                    page === "taskInstances" ? "font-bold" : ""
                   }`}
                 >
                   Task Instances
@@ -120,9 +93,7 @@ const SideNav = () => {
               <Link href="/admin/rooms">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "rooms"
-                      ? "font-bold"
-                      : ""
+                    page === "rooms" ? "font-bold" : ""
                   }`}
                 >
                   Rooms
@@ -131,30 +102,26 @@ const SideNav = () => {
               <Link href="/admin/channels">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "channels"
-                      ? "font-bold"
-                      : ""
+                    page === "channels" ? "font-bold" : ""
                   }`}
                 >
-                 Channels
+                  Channels
                 </p>
               </Link>
               <Link href="/admin/hackathon">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "hackathon"
-                      ? "font-bold"
-                      : ""
+                    page === "hackathon" ? "font-bold" : ""
                   }`}
                 >
-                 Hackathon Registrations
+                  Hackathon Registrations
                 </p>
               </Link>
             </div>
           )}
           {authUser!.type === "user" && (
             <div className="mt-18 w-full">
-               {/* <Link href="/users/projects">
+              {/* <Link href="/users/projects">
                         <p className={`text-xl hover:text-gray-300 cursor-pointer ${page === "projects" ? "font-bold" : ""}`}>Projects</p>
                     </Link> */}
               {/*      <Link href="/users/announcements">
@@ -165,9 +132,7 @@ const SideNav = () => {
                     </div> */}
               <div
                 className={`bg-white md:w-full py-2 px-10 rounded-2xl mt-2 ${
-                  page === "announcements"
-                    ? "bg-opacity-20"
-                    : "bg-opacity-5"
+                  page === "announcements" ? "bg-opacity-20" : "bg-opacity-5"
                 }`}
               >
                 <Link href="/users/announcements">
@@ -183,9 +148,7 @@ const SideNav = () => {
               </div>
               <div
                 className={`bg-white md:w-full py-2 px-10 rounded-2xl mt-2 ${
-                  page === "channels"
-                    ? "bg-opacity-20"
-                    : "bg-opacity-5"
+                  page === "channels" ? "bg-opacity-20" : "bg-opacity-5"
                 }`}
               >
                 <Link href="/users/channels">
@@ -201,9 +164,7 @@ const SideNav = () => {
               </div>
               <div
                 className={`bg-white md:w-full py-2 px-10 rounded-2xl mt-2 ${
-                  page === "projects"
-                    ? "bg-opacity-20"
-                    : "bg-opacity-5"
+                  page === "projects" ? "bg-opacity-20" : "bg-opacity-5"
                 }`}
               >
                 <Link href="/users/projects">
@@ -225,9 +186,7 @@ const SideNav = () => {
               <Link href="/alumni/dashboard">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "dashboard"
-                      ? "font-bold"
-                      : ""
+                    page === "dashboard" ? "font-bold" : ""
                   }`}
                 >
                   Dashboard
@@ -236,9 +195,7 @@ const SideNav = () => {
               <Link href="/alumni/donate">
                 <p
                   className={`text-xl hover:text-gray-300 cursor-pointer ${
-                    page === "donate"
-                      ? "font-bold"
-                      : ""
+                    page === "donate" ? "font-bold" : ""
                   }`}
                 >
                   Donate
@@ -256,10 +213,7 @@ const SideNav = () => {
             </div>
 
             <div className="bg-white rounded-3xl text-center cursor-pointer mx-auto w-11/12 left-0 right-0 shadow-md hover:bg-gray-100">
-              <p
-                className="text-l text-red-500 py-2 px-4"
-                onClick={logOut}
-              >
+              <p className="text-l text-red-500 py-2 px-4" onClick={logOut}>
                 Logout
               </p>
             </div>
@@ -270,8 +224,7 @@ const SideNav = () => {
       <div
         className="col-span-12 p-2 md:hidden w-full fixed top-0 z-50"
         style={{
-          background:
-            "linear-gradient(to right, #003D63, #0C72B0)",
+          background: "linear-gradient(to right, #003D63, #0C72B0)",
         }}
       >
         <Image
@@ -283,7 +236,6 @@ const SideNav = () => {
         />
       </div>
     </>
-    
   );
 };
 
