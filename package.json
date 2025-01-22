@@ -3,7 +3,7 @@
   "name": "zine-robotics-website",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://zine-backend.serveo.net/",
+  "proxy": "https://grateful-nicely-duck.ngrok-free.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

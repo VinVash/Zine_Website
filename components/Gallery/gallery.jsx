@@ -43,8 +43,11 @@ import w15 from "../../images/gallery/w15.jpg";
 import w16 from "../../images/gallery/w16.jpg";
 import w17 from "../../images/gallery/w17.jpg";
 import w18 from "../../images/gallery/w18.jpg";
+import w19 from "../../images/gallery/w19.jpg";
+import w20 from "../../images/gallery/w20.jpeg";
+import w21 from "../../images/gallery/w21.jpg";
 import crobocon from "../../images/gallery/carousel/competition.jpg";
-import c1 from "../../images/gallery/c1.jpg";
+// import c1 from "../../images/gallery/c1.jpg";
 import c2 from "../../images/gallery/c2.jpg";
 import c3 from "../../images/gallery/c3.jpg";
 import c4 from "../../images/gallery/c4.jpg";
@@ -61,12 +64,14 @@ import c14 from "../../images/gallery/c14.jpg";
 import c15 from "../../images/gallery/c15.png";
 import c16 from "../../images/gallery/c16.jpg";
 import c17 from "../../images/gallery/c17.png";
-import c18 from "../../images/gallery/c18.jpg";
-import c19 from "../../images/gallery/c19.jpg";
-import c20 from "../../images/gallery/c20.png";
+// import c18 from "../../images/gallery/c18.jpg";
+// import c19 from "../../images/gallery/c19.jpg";
+// import c20 from "../../images/gallery/c20.png";
 import c21 from "../../images/gallery/c21.png";
 import c22 from "../../images/gallery/c22.png";
 import c23 from "../../images/gallery/c23.png";
+import c24 from "../../images/gallery/c24.jpg";
+
 
 const Gallery = () => {
 
@@ -98,6 +103,9 @@ const Gallery = () => {
             <Image src={w16} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
             <Image src={w17} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
             <Image src={w18} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
+            <Image src={w19} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
+            <Image src={w20} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
+            <Image src={w21} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
           </div>
           
           {/* <h1 className="text-4xl text-center mx-auto mt-8 mb-20">PROJECTS</h1> */}
@@ -157,12 +165,13 @@ const Gallery = () => {
             <Image src={c15} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
             <Image src={c16} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
             <Image src={c17} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
-            <Image src={c18} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
+            {/* <Image src={c18} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
             <Image src={c19} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
-            <Image src={c20} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
+            <Image src={c20} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/> */}
             {/* <Image src={c21} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/> */}
             <Image src={c22} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
             <Image src={c23} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
+            <Image src={c24} className="object-cover opacity-50 hover:opacity-100 transition duration-500 ease-in-out overflow-hidden"/>
           </div>
           <h1 className="text-4xl text-center mx-auto my-20">ZINE DRONE RACING</h1>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 ">
