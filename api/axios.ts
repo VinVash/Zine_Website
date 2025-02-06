@@ -3,6 +3,11 @@ let db_url = process.env.NEXT_PUBLIC_API_URL;
 
 const api = axios.create({
   baseURL: db_url,
+  headers: {
+     "stage": "test"
+  }
+
+
 })
 
 api.interceptors.request.use(function (config) {
@@ -17,3 +22,5 @@ export const setAuthorizationHeader = (token: string) => {
 };
 
 export default api;
+
+

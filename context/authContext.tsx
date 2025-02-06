@@ -5,7 +5,7 @@ import { getDoc, doc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { getUser, IUser } from "../apis/users";
 import { log } from "console";
-import {setAuthorizationHeader} from "../api/axios"
+import { setAuthorizationHeader } from "../api/axios";
 
 interface UserType {
   email: string | null;
